@@ -52,7 +52,7 @@ static NSString *productCellIdentifier = @"productCell";
                                                                                   
                                                                                   //Enumerate through the IAPs and unlock their features
                                                                                   [[receipt inAppPurchases] enumerateObjectsUsingBlock:^(SCPStoreKitIAPReceipt *iapReceipt, NSUInteger idx, BOOL *stop) {
-                                                                                      NSLog(@"Previous purchase of '%@' on %@", [iapReceipt productIdentifier], [iapReceipt purchaseDate]);
+                                                                                      NSLog(@"IAP receipt :%@", [iapReceipt fullDescription]);
                                                                                   }];
                                                                                   
                                                                               } failure:^(NSError *error) {
@@ -65,20 +65,16 @@ static NSString *productCellIdentifier = @"productCell";
     //Request the product details from iTunes
     [[SCPStoreKitManager sharedInstance] requestProductsWithIdentifiers:productIdentifiers
 										   productsReturnedSuccessfully:^(NSArray *products) {
-											   
 											   NSLog(@"Products : %@", products);
-											   
-											   self.products = products;
-											   
-											   [_tableView reloadData];
-											   
+                                               self.products = products;
+                                               [_tableView reloadData];
 										   }
-														invalidProducts:^(NSArray *invalidProducts) {
-															NSLog(@"Invalid Products : %@", invalidProducts);
-														}
-																failure:^(NSError *error) {
-																	NSLog(@"Error : %@", [error localizedDescription]);
-																}];
+                                                        invalidProducts:^(NSArray *invalidProducts) {
+                                                            NSLog(@"Invalid Products : %@", invalidProducts);
+                                                        }
+                                                                failure:^(NSError *error) {
+                                                                    NSLog(@"Error : %@", [error localizedDescription]);
+                                                                }];
 }
 
 #pragma mark - IBActions
@@ -87,12 +83,14 @@ static NSString *productCellIdentifier = @"productCell";
 {
     //Request to restor previous purchases
 	[[SCPStoreKitManager sharedInstance] restorePurchasesPaymentTransactionStateRestored:^(NSArray *transactions) {
-		NSLog(@"Restored transactions : %@", transactions);
-	} paymentTransactionStateFailed:^(NSArray *transactions) {
-		NSLog(@"Failed to restore transactions : %@", transactions);
-	} failure:^(NSError *error) {
-		NSLog(@"Failure : %@", [error localizedDescription]);
-	}];
+        NSLog(@"Restored transactions : %@", transactions);
+	}
+                                                           paymentTransactionStateFailed:^(NSArray *transactions) {
+                                                               NSLog(@"Failed to restore transactions : %@", transactions);
+                                                           }
+                                                                                 failure:^(NSError *error) {
+                                                                                     NSLog(@"Failure : %@", [error localizedDescription]);
+                                                                                 }];
 }
 
 #pragma mark - UITableViewDataSource methods
@@ -131,18 +129,23 @@ static NSString *productCellIdentifier = @"productCell";
 {
 	[tableView deselectRowAtIndexPath:indexPath animated:YES];
 	
+    //Request payment for product
 	[[SCPStoreKitManager sharedInstance] requestPaymentForProduct:_products[indexPath.row]
 								paymentTransactionStatePurchasing:^(NSArray *transactions) {
-									NSLog(@"Purchasing products : %@", transactions);
-								} paymentTransactionStatePurchased:^(NSArray *transactions) {
-									NSLog(@"Purchased products : %@", transactions);
-								} paymentTransactionStateFailed:^(NSArray *transactions) {
-									NSLog(@"Failed products : %@", transactions);
-								} paymentTransactionStateRestored:^(NSArray *transactions) {
-									NSLog(@"Restored products : %@", transactions);
-								} failure:^(NSError *error) {
-									NSLog(@"Failure : %@", [error localizedDescription]);
-								}];
+                                    NSLog(@"Purchasing products : %@", transactions);
+                                }
+                                 paymentTransactionStatePurchased:^(NSArray *transactions) {
+                                     NSLog(@"Purchased products : %@", transactions);
+                                 }
+                                    paymentTransactionStateFailed:^(NSArray *transactions) {
+                                        NSLog(@"Failed products : %@", transactions);
+                                    }
+                                  paymentTransactionStateRestored:^(NSArray *transactions) {
+                                      NSLog(@"Restored products : %@", transactions);
+                                  }
+                                                          failure:^(NSError *error) {
+                                                              NSLog(@"Failure : %@", [error localizedDescription]);
+                                                          }];
 }
 
 - (void)didReceiveMemoryWarning
