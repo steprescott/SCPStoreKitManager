@@ -46,7 +46,6 @@
 		4A5DDEA91908AEFA00DB097A /* libssl.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A5DDE731908ACF500DB097A /* libssl.a */; };
 		4A5DDEAA1908AF0A00DB097A /* module.asn1 in Resources */ = {isa = PBXBuildFile; fileRef = 4A5DDE0A1908ACF500DB097A /* module.asn1 */; };
 		4A5DDEAB1908AF1400DB097A /* AppleIncRootCertificate.cer in Resources */ = {isa = PBXBuildFile; fileRef = 4A5DDE241908ACF500DB097A /* AppleIncRootCertificate.cer */; };
-		4A5DDEAD1908B10600DB097A /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A560BB3A183E75DB00572AC6 /* XCTest.framework */; };
 		4A5DDEBB1908B1F700DB097A /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4A5DDEB71908B1F700DB097A /* InfoPlist.strings */; };
 		4A5DDEBC1908B1F700DB097A /* SCPStoreKitManagerTests-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4A5DDEB91908B1F700DB097A /* SCPStoreKitManagerTests-Info.plist */; };
 		4A5DDEBD1908B1F700DB097A /* SCPStoreKitManagerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A5DDEBA1908B1F700DB097A /* SCPStoreKitManagerTests.m */; };
@@ -108,7 +107,6 @@
 		4A5DDE021908ACF500DB097A /* constr_TYPE.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = constr_TYPE.h; sourceTree = "<group>"; };
 		4A5DDE031908ACF500DB097A /* constraints.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = constraints.c; sourceTree = "<group>"; };
 		4A5DDE041908ACF500DB097A /* constraints.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = constraints.h; sourceTree = "<group>"; };
-		4A5DDE051908ACF500DB097A /* converter-sample.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = "converter-sample.c"; sourceTree = "<group>"; };
 		4A5DDE061908ACF500DB097A /* der_encoder.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = der_encoder.c; sourceTree = "<group>"; };
 		4A5DDE071908ACF500DB097A /* der_encoder.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = der_encoder.h; sourceTree = "<group>"; };
 		4A5DDE081908ACF500DB097A /* INTEGER.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = INTEGER.c; sourceTree = "<group>"; };
@@ -239,7 +237,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4A5DDEAD1908B10600DB097A /* XCTest.framework in Frameworks */,
 				4A5DDEA81908AEFA00DB097A /* libcrypto.a in Frameworks */,
 				4A5DDEA91908AEFA00DB097A /* libssl.a in Frameworks */,
 				A52BCCC2183FAF810074AED8 /* StoreKit.framework in Frameworks */,
@@ -356,7 +353,6 @@
 				4A5DDE021908ACF500DB097A /* constr_TYPE.h */,
 				4A5DDE031908ACF500DB097A /* constraints.c */,
 				4A5DDE041908ACF500DB097A /* constraints.h */,
-				4A5DDE051908ACF500DB097A /* converter-sample.c */,
 				4A5DDE061908ACF500DB097A /* der_encoder.c */,
 				4A5DDE071908ACF500DB097A /* der_encoder.h */,
 				4A5DDE081908ACF500DB097A /* INTEGER.c */,
@@ -821,13 +817,13 @@
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
-					"\"$(SRCROOT)/SCPStoreKitManager/src/SCPStoreKitManager/SCPStoreKitReceiptValidator\"/**",
+					"\"$(SRCROOT)/SCPStoreKitManager/src/SCPStoreKitManager\"/**",
 				);
 				INFOPLIST_FILE = "$(SRCROOT)/SCPStoreKitManager/SCPStoreKitManager-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(PROJECT_DIR)/SCPStoreKitManager/src/SCPStoreKitManager/SCPStoreKitReceiptValidator/**",
+					"\"$(SRCROOT)/SCPStoreKitManager/src/SCPStoreKitManager/SCPStoreKitReceiptValidator/openSSL/lib\"",
 				);
 				PRODUCT_NAME = SCPStoreKitManager;
 				PROVISIONING_PROFILE = "";
@@ -854,13 +850,13 @@
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
-					"\"$(SRCROOT)/SCPStoreKitManager/src/SCPStoreKitManager/SCPStoreKitReceiptValidator\"/**",
+					"\"$(SRCROOT)/SCPStoreKitManager/src/SCPStoreKitManager\"/**",
 				);
 				INFOPLIST_FILE = "$(SRCROOT)/SCPStoreKitManager/SCPStoreKitManager-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(PROJECT_DIR)/SCPStoreKitManager/src/SCPStoreKitManager/SCPStoreKitReceiptValidator/**",
+					"\"$(SRCROOT)/SCPStoreKitManager/src/SCPStoreKitManager/SCPStoreKitReceiptValidator/openSSL/lib\"",
 				);
 				PRODUCT_NAME = SCPStoreKitManager;
 				PROVISIONING_PROFILE = "";
