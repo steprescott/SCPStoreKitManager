@@ -242,7 +242,7 @@ typedef NS_ENUM(NSInteger, SCPAppReceiptASN1TypeIAP)
 	return iapReceipt;
 }
 
-- (NSDictionary *)receiptDescription
+- (NSDictionary *)fullDescription
 {
 	NSMutableDictionary *dictionary = [[NSMutableDictionary alloc] init];
 	

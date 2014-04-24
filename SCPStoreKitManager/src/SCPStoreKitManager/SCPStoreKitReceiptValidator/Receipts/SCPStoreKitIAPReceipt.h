@@ -21,6 +21,7 @@
 @property (nonatomic, strong, readonly) NSNumber *webItemId;
 
 - (SCPStoreKitIAPReceipt *)initWithData:(NSData *)inAppPurchasesData;
-- (NSDictionary *)receiptDescription;
+
+- (NSDictionary *)fullDescription;
 
 @end
