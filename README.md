@@ -1,7 +1,7 @@
 SCPStoreKitManager
 ==================
 
-Block based store kit manager for In-App Purchase for iOS7 with receipt validation.
+Block based store kit manager for In-App Purchase for iOS7 with receipt validation. Please note that you must have iTunes Connect set up correctly with some IAPs already. The example App has no visual feed back to the user but you can follow it's progress via the console. The app can only work on a iDevice and can **not** be ran in a simulator.
 
 ####Required frameworks
 * StoreKit
@@ -184,6 +184,12 @@ Explanation of arguments :
 
 ####Receipts
 There are two types of receipts `SCPStoreKitReceipt` and `SCPStoreKitIAPReceipt`. Each of them holds deferent data that can be very useful. You do not `init` any of these receipts, you are given them by the `SCPStoreKitReceiptValidator` method.
+
+All receipts have the same helper method :
+```
+- (NSDictionary *)fullDescription;
+```
+This simply outputs the receipt as a `NSDictionary`.
 
 #####SCPStoreKitReceipt
 This receipt holds the data we can use to validate that the receipt for the App is for this App and this device.
