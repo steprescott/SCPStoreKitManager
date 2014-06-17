@@ -810,20 +810,17 @@
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
-					"\"$(SRCROOT)/SCPStoreKitManager/src/SCPStoreKitManager\"/**",
 				);
 				INFOPLIST_FILE = "$(SRCROOT)/SCPStoreKitManager/SCPStoreKitManager-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"$(SRCROOT)/SCPStoreKitManager/src/SCPStoreKitManager/SCPStoreKitReceiptValidator/openSSL/lib\"",
-					"/Users/stevenprescott/Documents/GIT/Objective-C/My",
-					Frameworks/SCPStoreKitManager/Classes/SCPStoreKitReceiptValidator/openSSL/lib,
+					"\"$(SRCROOT)/../Classes/SCPStoreKitReceiptValidator/openSSL/lib\"",
 				);
 				PRODUCT_NAME = SCPStoreKitManager;
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
-				USER_HEADER_SEARCH_PATHS = "\"$(SRCROOT)/SCPStoreKitManager/src/SCPStoreKitManager/SCPStoreKitReceiptValidator\"/**";
+				USER_HEADER_SEARCH_PATHS = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -845,20 +842,17 @@
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
-					"\"$(SRCROOT)/SCPStoreKitManager/src/SCPStoreKitManager\"/**",
 				);
 				INFOPLIST_FILE = "$(SRCROOT)/SCPStoreKitManager/SCPStoreKitManager-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"$(SRCROOT)/SCPStoreKitManager/src/SCPStoreKitManager/SCPStoreKitReceiptValidator/openSSL/lib\"",
-					"/Users/stevenprescott/Documents/GIT/Objective-C/My",
-					Frameworks/SCPStoreKitManager/Classes/SCPStoreKitReceiptValidator/openSSL/lib,
+					"\"$(SRCROOT)/../Classes/SCPStoreKitReceiptValidator/openSSL/lib\"",
 				);
 				PRODUCT_NAME = SCPStoreKitManager;
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
-				USER_HEADER_SEARCH_PATHS = "\"$(SRCROOT)/SCPStoreKitManager/src/SCPStoreKitManager/SCPStoreKitReceiptValidator\"/**";
+				USER_HEADER_SEARCH_PATHS = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
