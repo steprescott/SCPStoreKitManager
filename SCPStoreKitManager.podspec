@@ -17,6 +17,6 @@ Pod::Spec.new do |s|
 
   s.source_files = 'Classes/**/*.h'
 
-  s.public_header_files = 'Classes/{SCPStoreKitManager.h, SCPStoreKitReceiptValidator/Receipts/*.h, SCPStoreKitReceiptValidator/*.h, Categories/*.h}'
+  s.public_header_files = 'Classes/{SCPStoreKitManager.h, SCPStoreKitReceiptValidator/Receipts/*.h, SCPStoreKitReceiptValidator/*.h, Categories/NSError+SCPStoreKitManager.h}'
   s.frameworks = 'StoreKit'
 end
