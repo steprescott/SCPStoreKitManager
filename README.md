@@ -222,7 +222,7 @@ For more info on these properties look at the WWDC13 Session. Two worth noting a
 * **NSMutableArray *inAppPurchases**
   This array holds all the IAPs made for the Apps receipt. See below for the properties and how they can be used to validate their purchases.
 
-#####SCPStoreKitReceipt
+#####SCPStoreKitIAPReceipt
 This receipt holds all the details for a single IAP. There are some useful properties in this receipt and these are : 
 ```
 @property (nonatomic, strong, readonly) NSString *productIdentifier;
