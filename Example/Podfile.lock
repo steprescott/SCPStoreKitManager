@@ -1,0 +1,19 @@
+PODS:
+  - OpenSSL (1.0.108)
+  - SCPStoreKitManager/Core (1.1.0)
+  - SCPStoreKitManager/SCPStoreKitReceiptValidator (1.1.0):
+    - OpenSSL (~> 1.0.1)
+    - SCPStoreKitManager/Core
+
+DEPENDENCIES:
+  - SCPStoreKitManager/SCPStoreKitReceiptValidator (from `../`)
+
+EXTERNAL SOURCES:
+  SCPStoreKitManager:
+    :path: ../
+
+SPEC CHECKSUMS:
+  OpenSSL: 62c06e5ec449a28e41c7b225c96193dc5b20800c
+  SCPStoreKitManager: ac1368644cf629222d2dfde89e9fe95ab16e943a
+
+COCOAPODS: 0.33.1
