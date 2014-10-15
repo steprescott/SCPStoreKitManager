@@ -1,6 +1,6 @@
 # SCPStoreKitManager [![Version](https://img.shields.io/cocoapods/v/SCPStoreKitManager.svg?style=flat)](http://cocoadocs.org/docsets/SCPStoreKitManager)
 
-Block based store kit manager for In-App Purchase for iOS7 with receipt validation. Please note that you must have iTunes Connect set up correctly with some IAPs already. The example App has no visual feed back to the user but you can follow it's progress via the console. The app can only work on a iDevice and can **not** be ran in a simulator.
+Block based store kit manager for In-App Purchase for iOS7 & iOS8 with receipt validation. Please note that you must have iTunes Connect set up correctly with some IAPs already. The example App has no visual feed back to the user but you can follow it's progress via the console. The app can only work on a iDevice and can **not** be ran in a simulator.
 
 ####Required frameworks
 * StoreKit
