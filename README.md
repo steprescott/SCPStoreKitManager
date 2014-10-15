@@ -21,6 +21,8 @@ Please note if you want to include the receipt validation part of this manager t
 
     pod 'SCPStoreKitManager/SCPStoreKitReceiptValidator'
 
+Also note the receipt validator uses OpenSSL and compiles the static libary when you run `pod install`. This can take up to 15 minutes to complete.
+
 #####Submodule
 
 1. Add this repo as a submodule or download it as a .zip
