@@ -1,8 +1,8 @@
 PODS:
-  - OpenSSL (1.0.108)
-  - SCPStoreKitManager/Core (1.1.0)
-  - SCPStoreKitManager/SCPStoreKitReceiptValidator (1.1.0):
-    - OpenSSL (~> 1.0.1)
+  - OpenSSL (1.0.109)
+  - SCPStoreKitManager/Core (1.1.1)
+  - SCPStoreKitManager/SCPStoreKitReceiptValidator (1.1.1):
+    - OpenSSL (~> 1.0.0)
     - SCPStoreKitManager/Core
 
 DEPENDENCIES:
@@ -13,7 +13,7 @@ EXTERNAL SOURCES:
     :path: ../
 
 SPEC CHECKSUMS:
-  OpenSSL: 62c06e5ec449a28e41c7b225c96193dc5b20800c
-  SCPStoreKitManager: ac1368644cf629222d2dfde89e9fe95ab16e943a
+  OpenSSL: 4810adf5c99b0e2cd20670a11a987c805e8a521c
+  SCPStoreKitManager: d6617b4af295a5043ea01671cd87389a1a1779e2
 
-COCOAPODS: 0.33.1
+COCOAPODS: 0.34.2

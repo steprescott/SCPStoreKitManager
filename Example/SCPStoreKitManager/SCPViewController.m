@@ -8,8 +8,8 @@
 
 #import "SCPViewController.h"
 
-#import "SCPStoreKitManager.h"
-#import "SCPStoreKitReceiptValidator.h"
+#import <SCPStoreKitManager/SCPStoreKitManager.h>
+#import <SCPStoreKitManager/SCPStoreKitReceiptValidator.h>
 
 typedef NS_ENUM(NSUInteger, ProductCellViewTags) {
     productNameLabelTag = 100,
