@@ -17,6 +17,10 @@ it, simply add the following line to your Podfile:
 
     pod 'SCPStoreKitManager'
 
+Please note if you want to include the receipt validation part of this manager then you need to tell CocoaPods that you want the validation subspec by adding the following line instead of the snippit above :
+
+    pod 'SCPStoreKitManager/SCPStoreKitReceiptValidator'
+
 #####Submodule
 
 1. Add this repo as a submodule or download it as a .zip
