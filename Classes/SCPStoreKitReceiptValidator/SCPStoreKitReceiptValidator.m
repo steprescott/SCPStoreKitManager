@@ -173,7 +173,7 @@
 	SHA1([input bytes], [input length], [hash mutableBytes]);
     
 	//Check that the current bundleID, bundleVersion and the Hash is equal to that of the receipt
-	if([_bundleIdentifier isEqualToString:[receipt bundleIdentifier]] && [_bundleVersion isEqualToString:[receipt version]] && [hash isEqualToData:[receipt hash]])
+	if([_bundleIdentifier isEqualToString:[receipt bundleIdentifier]] && [_bundleVersion isEqualToString:[receipt version]] && [hash isEqualToData:[receipt receiptHash]])
 	{
 		if(successBlock)
 		{

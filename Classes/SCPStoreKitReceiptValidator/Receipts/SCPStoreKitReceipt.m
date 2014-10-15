@@ -28,7 +28,7 @@ typedef NS_ENUM(NSInteger, SCPAppReceiptASN1Type)
 
 @property (nonatomic, strong) NSString *bundleIdentifier;
 @property (nonatomic, strong) NSData *bundleIdentifierData;
-@property (nonatomic, strong) NSData *hash;
+@property (nonatomic, strong) NSData *receiptHash;
 @property (nonatomic, strong) NSData *opaqueValue;
 @property (nonatomic, strong) NSString *originalVersion;
 @property (nonatomic, strong) NSString *version;
@@ -188,7 +188,7 @@ typedef NS_ENUM(NSInteger, SCPAppReceiptASN1Type)
 							[receipt setOpaqueValue:data];
 							break;
 						case SCPAppReceiptASN1TypeHash:
-							[receipt setHash:data];
+                            [receipt setReceiptHash:data];
 							break;
 					}
 				}
@@ -255,7 +255,7 @@ typedef NS_ENUM(NSInteger, SCPAppReceiptASN1Type)
 
 - (NSData *)appleIncRootCertificate
 {
-    return [NSData dataWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"AppleIncRootCertificate" withExtension:@"cer"]];
+    return [NSData dataWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"SCPStoreKitReceiptValidatorResources.bundle/AppleIncRootCertificate" withExtension:@"cer"]];
 }
 
 - (NSDictionary *)fullDescription
@@ -264,7 +264,7 @@ typedef NS_ENUM(NSInteger, SCPAppReceiptASN1Type)
 	
 	[dictionary setObject:([self bundleIdentifier]) ? [self bundleIdentifier] : @"" forKey:@"bundleIdentifier"];
 	[dictionary setObject:([self bundleIdentifierData]) ? [self bundleIdentifierData] : @"" forKey:@"bundleIdentifierData"];
-	[dictionary setObject:([self hash]) ? [self hash] : @"" forKey:@"hash"];
+	[dictionary setObject:([self receiptHash]) ? [self receiptHash] : @"" forKey:@"hash"];
 	[dictionary setObject:([self opaqueValue]) ? [self opaqueValue] : @"" forKey:@"opaqueValue"];
 	[dictionary setObject:([self originalVersion]) ? [self originalVersion] : @"" forKey:@"originalVersion"];
 	[dictionary setObject:([self version]) ? [self version] : @"" forKey:@"version"];

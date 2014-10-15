@@ -14,7 +14,7 @@
 
 @property (nonatomic, strong, readonly) NSString *bundleIdentifier;
 @property (nonatomic, strong, readonly) NSData *bundleIdentifierData;
-@property (nonatomic, strong, readonly) NSData *hash;
+@property (nonatomic, strong, readonly) NSData *receiptHash;
 @property (nonatomic, strong, readonly) NSData *opaqueValue;
 @property (nonatomic, strong, readonly) NSString *originalVersion;
 @property (nonatomic, strong, readonly) NSString *version;
