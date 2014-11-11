@@ -97,7 +97,7 @@
     if(_shouldShowReceiptAlert)
     {
         NSString *title = (_customAlertViewTitle) ? _customAlertViewTitle : @"In App purchase receipt";
-        NSString *message = (_customAlertViewMessage) ? _customAlertViewMessage : @"We need to request a purchase receipt from Apple. To do this you will be asked to enter your Apple ID details.\n\nDo you want to request the receipt \nto restor purchases?";
+        NSString *message = (_customAlertViewMessage) ? _customAlertViewMessage : @"We need to request a purchase receipt from Apple. To do this you will be asked to enter your Apple ID details.\n\nDo you want to request the receipt \nto restore purchases?";
         
         UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:title
                                                             message:message
