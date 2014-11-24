@@ -88,6 +88,7 @@
 	self.paymentTransactionStatePurchasedBlock = paymentTransactionStatePurchasedBlock;
 	self.paymentTransactionStateFailedBlock = paymentTransactionStateFailedBlock;
 	self.paymentTransactionStateRestoredBlock = paymentTransactionStateRestoredBlock;
+    self.failureBlock = failureBlock;
 	
 	SKPayment *payment = [SKPayment paymentWithProduct:product];
 	
@@ -109,6 +110,7 @@
 {	
 	self.paymentTransactionStateFailedBlock = paymentTransactionStateFailedBlock;
 	self.paymentTransactionStateRestoredBlock = paymentTransactionStateRestoredBlock;
+    self.failureBlock = failureBlock;
 	
 	if([SKPaymentQueue canMakePayments])
 	{
@@ -189,6 +191,14 @@
 			_paymentTransactionStateRestoredBlock(restoredTransactions);
 		}
 	}
+}
+
+- (void)paymentQueue:(SKPaymentQueue *)queue restoreCompletedTransactionsFailedWithError:(NSError *)error
+{
+    if(_failureBlock)
+    {
+        _failureBlock(error);
+    }
 }
 
 - (void)request:(SKRequest *)request didFailWithError:(NSError *)error
