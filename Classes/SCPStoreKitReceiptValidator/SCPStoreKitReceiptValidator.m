@@ -124,7 +124,7 @@
 
 - (void)verifyReceiptAtPath:(NSString *)receiptPath success:(Success)successBlock failure:(Failure)failureBlock
 {
-	if(![_bundleVersion isEqualToString:[[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleShortVersionString"]])
+	if(![_bundleVersion isEqualToString:[[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleVersion"]])
 	{
 		if(failureBlock)
 		{
