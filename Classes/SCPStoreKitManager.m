@@ -128,6 +128,16 @@
 
 #pragma mark - SKPaymentTransactionObserver methods
 
+- (void)paymentQueue:(SKPaymentQueue *)queue restoreCompletedTransactionsFailedWithError:(NSError *)error {
+    if (self.paymentTransactionStateFailedBlock)
+        self.paymentTransactionStateFailedBlock(error);
+}
+
+- (void)paymentQueueRestoreCompletedTransactionsFinished:(SKPaymentQueue *)queue {
+    if (self.paymentTransactionStateRestoredBlock)
+        self.paymentTransactionStateRestoredBlock(queue.transactions);
+}
+
 - (void)paymentQueue:(SKPaymentQueue *)queue updatedTransactions:(NSArray *)transactions
 {
 	if([transactions count] > 0)
@@ -191,14 +201,6 @@
 			_paymentTransactionStateRestoredBlock(restoredTransactions);
 		}
 	}
-}
-
-- (void)paymentQueue:(SKPaymentQueue *)queue restoreCompletedTransactionsFailedWithError:(NSError *)error
-{
-    if(_failureBlock)
-    {
-        _failureBlock(error);
-    }
 }
 
 - (void)request:(SKRequest *)request didFailWithError:(NSError *)error
