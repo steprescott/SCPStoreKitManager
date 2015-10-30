@@ -82,6 +82,34 @@
 	}
 }
 
+- (void)configurePaymentTransactionStatePurchasing:(PaymentTransactionStatePurchasing)paymentTransactionStatePurchasingBlock paymentTransactionStatePurchased:(PaymentTransactionStatePurchased)paymentTransactionStatePurchasedBlock paymentTransactionStateFailed:(PaymentTransactionStateFailed)paymentTransactionStateFailedBlock paymentTransactionStateRestored:(PaymentTransactionStateRestored)paymentTransactionStateRestoredBlock failure:(Failure)failureBlock {
+    
+    self.paymentTransactionStatePurchasingBlock = paymentTransactionStatePurchasingBlock;
+    self.paymentTransactionStatePurchasedBlock = paymentTransactionStatePurchasedBlock;
+    self.paymentTransactionStateFailedBlock = paymentTransactionStateFailedBlock;
+    self.paymentTransactionStateRestoredBlock = paymentTransactionStateRestoredBlock;
+    self.failureBlock = failureBlock;
+    
+    [[SKPaymentQueue defaultQueue] addTransactionObserver:self];
+}
+
+- (void)requestPaymentForProduct:(SKProduct *)product {
+    SKPayment *payment = [SKPayment paymentWithProduct:product];
+    
+    if([SKPaymentQueue canMakePayments])
+    {
+        [[SKPaymentQueue defaultQueue] addTransactionObserver:self];
+        [[SKPaymentQueue defaultQueue] addPayment:payment];
+    }
+    else
+    {
+        if(self.failureBlock)
+        {
+            self.failureBlock([NSError errorWithDomain:SCPStoreKitDomain code:SCPErrorCodePaymentQueueCanNotMakePayments errorDescription:@"SKPaymentQueue can not make payments" errorFailureReason:@"Has the SKPaymentQueue got any uncompleted purchases?" errorRecoverySuggestion:@"Finish all transactions"]);
+        }
+    }
+}
+
 - (void)requestPaymentForProduct:(SKProduct *)product paymentTransactionStatePurchasing:(PaymentTransactionStatePurchasing)paymentTransactionStatePurchasingBlock paymentTransactionStatePurchased:(PaymentTransactionStatePurchased)paymentTransactionStatePurchasedBlock paymentTransactionStateFailed:(PaymentTransactionStateFailed)paymentTransactionStateFailedBlock paymentTransactionStateRestored:(PaymentTransactionStateRestored)paymentTransactionStateRestoredBlock failure:(Failure)failureBlock
 {
 	self.paymentTransactionStatePurchasingBlock = paymentTransactionStatePurchasingBlock;
