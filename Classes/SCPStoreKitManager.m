@@ -128,9 +128,19 @@
 
 #pragma mark - SKPaymentTransactionObserver methods
 
+- (void)paymentQueueRestoreCompletedTransactionsFinished:(SKPaymentQueue *)queue
+{
+    [self validateQueue:queue withTransactions:queue.transactions];
+}
+
 - (void)paymentQueue:(SKPaymentQueue *)queue updatedTransactions:(NSArray *)transactions
 {
-	if([transactions count] > 0)
+    [self validateQueue:queue withTransactions:transactions];
+}
+
+- (void) validateQueue:(SKPaymentQueue *)queue withTransactions:(NSArray *)transactions
+{
+    if([transactions count] > 0)
 	{
 		[transactions enumerateObjectsUsingBlock:^(SKPaymentTransaction *transaction, NSUInteger idx, BOOL *stop) {
 			
