@@ -2,14 +2,14 @@
 
 Block based store kit manager for In-App Purchase for iOS 7, 8 & 9 with receipt validation. Please note that you must have iTunes Connect set up correctly with some IAPs already. The example App has no visual feed back to the user but you can follow it's progress via the console. The app can only work on a iDevice and can **not** be ran in a simulator.
 
-####Required frameworks
+#### Required frameworks
 * StoreKit
 
-==================
+---
 
-####Installation
+#### Installation
 
-#####Pod
+##### Pod
 
 
 SCPStoreKitManager is available through [CocoaPods](http://cocoapods.org). To install
@@ -23,7 +23,7 @@ Please note if you want to include the receipt validation part of this manager t
 
 Also note the receipt validator uses OpenSSL and compiles the static libary when you run `pod install`. This can take up to 15 minutes to complete.
 
-#####Submodule
+##### Submodule
 
 1. Add this repo as a submodule or download it as a .zip
 2. Within the folder named `src` there is the required files in the folder named `SCPStoreKitManager`. If you don't wish to validate receipts then only copy the `Categories` folder and the `SCPStoreKitManager.h + .m` into your project.
@@ -37,13 +37,13 @@ NOTE : If you want to use your own implementation of OpenSSL then link these sea
 
 You should now be able to build the project and get no errors. If you do have errors, ensure that both search paths are set to `recursive`.
 
-==================
+---
 
-####Usage
+#### Usage
 
 The framework is split into two parts. The first is to retrieve the In-App purchases from iTunes and handle the purchase of them. The second is receipt validation. You do not need to use the receipt validation but it is advised to protect your IAPs.
 
-#####SCPStoreKitManager
+##### SCPStoreKitManager
 This is a nice block based wrapper round StoreKits delegate methods.
 
 There are four instance methods that are to accessed via the shared instance.
@@ -58,7 +58,7 @@ This requests the IAP details for each product you ask for and upon a successful
 
 The failure block will catch any other errors such as no connectivity to iTunes.
 
-######Example
+###### Example
 ```
 //Request the product details from iTunes
 [[SCPStoreKitManager sharedInstance] requestProductsWithIdentifiers:productIdentifiers
@@ -73,7 +73,7 @@ The failure block will catch any other errors such as no connectivity to iTunes.
                                                             }];
 ```
 
-==================
+---
 
 ```
 - (void)requestPaymentForProduct:(SKProduct *)product paymentTransactionStatePurchasing:(PaymentTransactionStatePurchasing)paymentTransactionStatePurchasingBlock paymentTransactionStatePurchased:(PaymentTransactionStatePurchased)paymentTransactionStatePurchasedBlock paymentTransactionStateFailed:(PaymentTransactionStateFailed)paymentTransactionStateFailedBlock paymentTransactionStateRestored:(PaymentTransactionStateRestored)paymentTransactionStateRestoredBlock failure:(Failure)failureBlock;
@@ -81,7 +81,7 @@ The failure block will catch any other errors such as no connectivity to iTunes.
 
 This method takes a SKProduct that you wish to request payment for. There are four blocks that are called depending on the state of the SKProduct transaction. The use of these blocks is to allow you to update your UI along the process of taking payment. Each of these blocks with the exception of the failure block return an `NSArray` of `SKPaymentTransaction`. When the `paymentTransactionStatePurchased` block is called Apple has taken payment for the products that are returned in the transactions array. At this point you should unlock or add what is needed to honour the purchase.
 
-######Example
+###### Example
 ```
 //Request payment for product
 [[SCPStoreKitManager sharedInstance] requestPaymentForProduct:_products[indexPath.row]
@@ -102,14 +102,14 @@ This method takes a SKProduct that you wish to request payment for. There are fo
                                                       }];
 ```
 
-==================
+---
 
 ```
 - (void)restorePurchasesPaymentTransactionStateRestored:(PaymentTransactionStateRestored)paymentTransactionStateRestoredBlock paymentTransactionStateFailed:(PaymentTransactionStateFailed)paymentTransactionStateFailedBlock failure:(Failure)failureBlock;
 ```
 If you offer IAP you must provide a way for any IAP made to be restored [More info](http://matt.coneybeare.me/app-store-rejection-for-not-having-in-app-purchase-restoration/ "Blog post"). To do this call this method on the shared instance and all previous transactions will be returned to the `PaymentTransactionStateRestored` block in an `NSArray` of `SKPaymentTransaction`.
 
-######Example
+###### Example
 ```
 //Request to restore previous purchases
 [[SCPStoreKitManager sharedInstance] restorePurchasesPaymentTransactionStateRestored:^(NSArray *transactions) {
@@ -123,20 +123,20 @@ If you offer IAP you must provide a way for any IAP made to be restored [More in
                                                                              }];
 ```
 
-==================
+---
 
 ```
 - (NSString *)localizedPriceForProduct:(SKProduct *)product;
 ```
 Method that takes a `SKProduct` and returns a `NSString` of the price for the product that matches the phones locale.
 
-######Example
+###### Example
 ```
 [productPriceLabel setText:[[SCPStoreKitManager sharedInstance] localizedPriceForProduct:product]];
 ```
-==================
+---
 
-#####SCPStoreKitReceiptValidator
+##### SCPStoreKitReceiptValidator
 ```
 - (void)validateReceiptWithBundleIdentifier:(NSString *)bundleIdentifier bundleVersion:(NSString *)bundleVersion tryAgain:(BOOL)tryAgain showReceiptAlert:(BOOL)showReceiptAlert alertViewTitle:(NSString *)alertViewTitle alertViewMessage:(NSString *)alertViewMessage success:(Success)successBlock failure:(Failure)failureBlock;
 ```
@@ -171,7 +171,7 @@ Explanation of arguments :
 
     If the receipt is to be invalid you can handle this in the failure block.
     
-######Example
+###### Example
 ```
 //Validate the Apps receipt
 [[SCPStoreKitReceiptValidator sharedInstance] validateReceiptWithBundleIdentifier:@"me.ste.SCPStoreKitManager"
@@ -196,9 +196,9 @@ Explanation of arguments :
                                                                               NSLog(@"%@", [error fullDescription]);
                                                                           }];
 ```
-==================
+---
 
-####Receipts
+#### Receipts
 There are two types of receipts `SCPStoreKitReceipt` and `SCPStoreKitIAPReceipt`. Each of them holds deferent data that can be very useful. You do not `init` any of these receipts, you are given them by the `SCPStoreKitReceiptValidator` method.
 
 All receipts have the same helper method :
@@ -207,7 +207,7 @@ All receipts have the same helper method :
 ```
 This simply outputs the receipt as a `NSDictionary`.
 
-#####SCPStoreKitReceipt
+##### SCPStoreKitReceipt
 This receipt holds the data we can use to validate that the receipt for the App is for this App and this device.
 
 The properties are :
@@ -228,7 +228,7 @@ For more info on these properties look at the WWDC13 Session. Two worth noting a
 * **NSMutableArray *inAppPurchases**
   This array holds all the IAPs made for the Apps receipt. See below for the properties and how they can be used to validate their purchases.
 
-#####SCPStoreKitIAPReceipt
+##### SCPStoreKitIAPReceipt
 This receipt holds all the details for a single IAP. There are some useful properties in this receipt and these are : 
 ```
 @property (nonatomic, strong, readonly) NSString *productIdentifier;
@@ -251,14 +251,14 @@ Some ways to use these properties are :
   
   If it was a consumable item such as coins or tokens you can count how many of the item were purchased and then compare that against the users balance to check there hasn't been any tempering with balances. (.plist editing.) If this product gives the user 10 tokens and they have bought it twice then they should have a maximum of 20 tokens. If they have more then you know that something has been tampered with and deal with it. 
 
-==================
+---
 
-####Contact
+#### Contact
 twitter : [@ste_prescott](https://twitter.com/ste_prescott "Twitter account").
 
-==================
+---
 
-####License
+#### License
 This project made available under the MIT License.
 
 Copyright (C) 2014 Ste Prescott
